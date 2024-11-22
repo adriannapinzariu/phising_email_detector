@@ -7,12 +7,13 @@ function MiddleSection() {
   const [emailContent, setEmailContent] = useState(""); // Store email content
   const [isLoading, setIsLoading] = useState(false); // Track loading state
   const [processedEmail, setProcessedEmail] = useState(""); // Store processed email with highlights
+  const [error, setError] = useState(null); // Track errors
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
 
-    // Simulate reading email content from the file (replace with real implementation)
+    // Read email content from the uploaded file
     const reader = new FileReader();
     reader.onload = (e) => {
       setEmailContent(e.target.result);
@@ -24,39 +25,52 @@ function MiddleSection() {
     document.getElementById("file-upload").click();
   };
 
-  const handleViewResultsClick = () => {
+  const handleViewResultsClick = async () => {
     setIsLoading(true);
-    console.log("Processing results...");
+    setError(null);
+    setProcessedEmail(""); // Clear previous results
 
-    // Simulate processing and highlight features
-    setTimeout(() => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email_content: emailContent }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to analyze the email.");
+      }
+
+      const data = await response.json();
+      const highlightedEmail = highlightEmail(data.features); // Highlight features from the backend
+      setProcessedEmail(highlightedEmail);
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setIsLoading(false);
-      const features = analyzeEmail(emailContent); // Analyze email and highlight features
-      setProcessedEmail(features);
-      console.log("Results ready!");
-    }, 3000);
+    }
   };
 
-  // Simulated email analysis function
-  const analyzeEmail = (content) => {
-    if (!content) return "";
+  const highlightEmail = (features) => {
+    let content = emailContent;
 
-    // Mock keywords for phishing and non-phishing
-    const phishingKeywords = ["urgent", "password", "click", "bank"];
-    const safeKeywords = ["hello", "thank you", "regards", "attached"];
+    features.phishing.forEach((word) => {
+      content = content.replace(
+        new RegExp(`\\b${word}\\b`, "gi"),
+        `<span class="phishing-feature">${word}</span>`
+      );
+    });
 
-    // Split the content into words and wrap flagged features
-    return content
-      .split(" ")
-      .map((word) => {
-        if (phishingKeywords.includes(word.toLowerCase())) {
-          return `<span class="phishing-feature">${word}</span>`;
-        } else if (safeKeywords.includes(word.toLowerCase())) {
-          return `<span class="safe-feature">${word}</span>`;
-        }
-        return word;
-      })
-      .join(" ");
+    features.safe.forEach((word) => {
+      content = content.replace(
+        new RegExp(`\\b${word}\\b`, "gi"),
+        `<span class="safe-feature">${word}</span>`
+      );
+    });
+
+    return content;
   };
 
   return (
@@ -92,6 +106,7 @@ function MiddleSection() {
           <div className="loading-bar-progress"></div>
         </div>
       )}
+      {error && <p className="error-text">{error}</p>}
       {!isLoading && processedEmail && (
         <div className="email-display">
           <h3>Processed Email:</h3>
