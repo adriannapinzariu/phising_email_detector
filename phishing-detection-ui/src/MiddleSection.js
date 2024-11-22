@@ -7,6 +7,7 @@ function MiddleSection() {
   const [emailContent, setEmailContent] = useState(""); // Store email content
   const [isLoading, setIsLoading] = useState(false); // Track loading state
   const [processedEmail, setProcessedEmail] = useState(""); // Store processed email with highlights
+  const [resultData, setResultData] = useState(null); // Store result details
   const [error, setError] = useState(null); // Track errors
 
   const handleFileChange = (event) => {
@@ -29,6 +30,7 @@ function MiddleSection() {
     setIsLoading(true); // Start loading
     setError(null);
     setProcessedEmail(""); // Clear previous results
+    setResultData(null); // Clear previous result
 
     try {
       const response = await fetch("http://127.0.0.1:5000/analyze", {
@@ -50,6 +52,10 @@ function MiddleSection() {
       setTimeout(() => {
         setIsLoading(false); // Stop loading after the bar is full
         setProcessedEmail(highlightedEmail); // Set processed email
+        setResultData({
+          result: data.result,
+          likelihood: data.likelihood,
+        }); // Set result details
       }, 3000); // Adjust the timeout duration as necessary
     } catch (err) {
       setError(err.message);
@@ -59,12 +65,12 @@ function MiddleSection() {
 
   const highlightEmail = (features) => {
     let content = emailContent;
-  
+
     // Ensure the entire subject line is bolded
     content = content.replace(/^(Subject:.*)$/im, (match) => {
       return `<strong>${match}</strong>`;
     });
-  
+
     // Highlight phishing features
     features.phishing.forEach((word) => {
       const regex = new RegExp(`\\b(${word})\\b`, "gi"); // Case-insensitive regex
@@ -73,7 +79,7 @@ function MiddleSection() {
         return `<span class="phishing-feature">${capitalized}</span>`;
       });
     });
-  
+
     // Highlight safe features
     features.safe.forEach((word) => {
       const regex = new RegExp(`\\b(${word})\\b`, "gi"); // Case-insensitive regex
@@ -82,11 +88,10 @@ function MiddleSection() {
         return `<span class="safe-feature">${capitalized}</span>`;
       });
     });
-  
+
     return content;
   };
-  
-  
+
   return (
     <section className="middle-section">
       <button className="cloud-platform-button">Discover Phishing Protection</button>
@@ -121,6 +126,19 @@ function MiddleSection() {
         </div>
       )}
       {error && <p className="error-text">{error}</p>}
+      {!isLoading && resultData && (
+  <div className="results-display">
+    <p>
+      <strong>Results:</strong>{" "}
+      <span
+        className={resultData.result === "Phishing" ? "red-text" : "green-text"}
+      >
+        {resultData.result} - {resultData.likelihood}%
+      </span>
+    </p>
+  </div>
+)}
+
       {!isLoading && processedEmail && (
         <div className="email-display">
           <p dangerouslySetInnerHTML={{ __html: processedEmail }}></p>
