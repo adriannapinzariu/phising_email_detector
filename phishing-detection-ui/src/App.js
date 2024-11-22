@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Header from "./Header"; // Import Header component
 import "./App.css";
 
 function App() {
@@ -21,10 +22,11 @@ function App() {
 
   return (
     <div className="container">
-      <header className="header">
-        <h1>AI-Powered Phishing Detection</h1>
-        <p>Analyze email content to detect potential phishing attacks.</p>
-      </header>
+
+      <Header
+        title="AI-Powered Phishing Detection"
+        subtitle="Analyze email content to detect potential phishing attacks."
+      />
       <main className="main">
         <form onSubmit={handleSubmit} className="form">
           <textarea
