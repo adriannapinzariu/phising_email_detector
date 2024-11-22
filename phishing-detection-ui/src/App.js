@@ -20,33 +20,44 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="container">
+      <header className="header">
         <h1>AI-Powered Phishing Detection</h1>
-        <form onSubmit={handleSubmit}>
+        <p>Analyze email content to detect potential phishing attacks.</p>
+      </header>
+      <main className="main">
+        <form onSubmit={handleSubmit} className="form">
           <textarea
+            className="email-input"
             value={emailContent}
             onChange={(e) => setEmailContent(e.target.value)}
             placeholder="Paste your email content here..."
             rows="10"
-            cols="50"
           ></textarea>
-          <br />
-          <button type="submit">Analyze</button>
+          <button type="submit" className="analyze-button">
+            Analyze Email
+          </button>
         </form>
         {result && (
-          <div className="result">
+          <div className="result-box">
             {result.error ? (
-              <p style={{ color: "red" }}>{result.error}</p>
+              <p className="error-text">{result.error}</p>
             ) : (
               <>
-                <p>Likelihood: {result.likelihood}%</p>
-                <p>Result: {result.result}</p>
+                <p className="result-label">Likelihood:</p>
+                <p className="result-value">{result.likelihood}%</p>
+                <p className="result-label">Result:</p>
+                <p className="result-value">
+                  {result.is_phishing ? "Phishing Email" : "Safe Email"}
+                </p>
               </>
             )}
           </div>
         )}
-      </header>
+      </main>
+      <footer className="footer">
+        <p>© 2024 Phishing Detection AI. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
