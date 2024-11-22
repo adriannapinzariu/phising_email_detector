@@ -43,6 +43,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    z-index: 1;
   }
   
   .primary-button {
@@ -57,10 +58,12 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 40px;
+    z-index: 1;
   }
   
   .primary-button:hover {
     background-color: #4c49b2;
+    z-index: 1;
   }
   
   .secondary-button {
@@ -75,11 +78,13 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     margin-bottom: 40px;
+    z-index: 1;
   }
   
   .secondary-button:hover {
     background-color: #6c63ff;
     color: white;
+    z-index: 1;
   }
 
   .cloud-platform-button {

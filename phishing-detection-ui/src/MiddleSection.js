@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MiddleSection.css";
-import phishingImage from "./phishing.png"; 
+import phishingImage from "./phishing.png";
 import "@fontsource/inter";
 
 function MiddleSection() {
@@ -106,35 +106,46 @@ function MiddleSection() {
         <br />
         From anywhere and on any email platform.
       </p>
-      {!isLoading && (
-        <div className="button-image-container">
-          <div className="button-group">
-            <input
-              id="file-upload"
-              type="file"
-              accept=".eml, .txt, .msg"
-              style={{ display: "none" }}
-              onChange={handleFileChange}
-            />
-            <button className="primary-button" onClick={handleUploadClick}>
-              Upload An Email
-            </button>
-            <button className="secondary-button" onClick={handleViewResultsClick}>
-              View Results
-            </button>
-          </div>
-          <img src={phishingImage} alt="Phishing Illustration" className="phishing-image" />
-        </div>
-      )}
 
+      {/* Conditional Rendering for Buttons and Image */}
+      <div className="button-image-container">
+  <div className="button-group">
+    <input
+      id="file-upload"
+      type="file"
+      accept=".eml, .txt, .msg"
+      style={{ display: "none" }}
+      onChange={handleFileChange}
+    />
+    <button className="primary-button" onClick={handleUploadClick}>
+      Upload An Email
+    </button>
+    <button
+      className="secondary-button"
+      onClick={handleViewResultsClick}
+      disabled={isLoading} // Disable button during loading
+    >
+      View Results
+    </button>
+  </div>
+  {/* Show phishing image only if no results or loading */}
+  {!isLoading && !resultData && (
+    <img src={phishingImage} alt="Phishing Illustration" className="phishing-image" />
+  )}
+</div>
+
+
+      {/* Loading Bar */}
       {isLoading && (
         <div className="loading-bar">
           <div className="loading-bar-progress"></div>
         </div>
       )}
 
+      {/* Error Message */}
       {error && <p className="error-text">{error}</p>}
 
+      {/* Results Section */}
       {!isLoading && resultData && (
         <div className="results-container">
           <h3 className="results-header">Results</h3>
@@ -152,6 +163,7 @@ function MiddleSection() {
         </div>
       )}
 
+      {/* Processed Email Section */}
       {!isLoading && processedEmail && (
         <div>
           <div className="email-display">
