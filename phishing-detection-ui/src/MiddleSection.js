@@ -55,23 +55,35 @@ function MiddleSection() {
 
   const highlightEmail = (features) => {
     let content = emailContent;
-
+  
+    // Extract and bold the subject line if it exists
+    const subjectMatch = content.match(/Subject:\s*(.+)/i); // Match the subject line
+    if (subjectMatch) {
+      const subject = subjectMatch[1];
+      content = content.replace(
+        new RegExp(`Subject:\\s*${subject}`, "i"),
+        `<strong>Subject: ${subject}</strong>`
+      );
+    }
+  
+    // Highlight phishing and safe features
     features.phishing.forEach((word) => {
       content = content.replace(
         new RegExp(`\\b${word}\\b`, "gi"),
         `<span class="phishing-feature">${word}</span>`
       );
     });
-
+  
     features.safe.forEach((word) => {
       content = content.replace(
         new RegExp(`\\b${word}\\b`, "gi"),
         `<span class="safe-feature">${word}</span>`
       );
     });
-
+  
     return content;
   };
+  
 
   return (
     <section className="middle-section">
@@ -109,7 +121,6 @@ function MiddleSection() {
       {error && <p className="error-text">{error}</p>}
       {!isLoading && processedEmail && (
         <div className="email-display">
-          <h3>Processed Email:</h3>
           <p dangerouslySetInnerHTML={{ __html: processedEmail }}></p>
         </div>
       )}

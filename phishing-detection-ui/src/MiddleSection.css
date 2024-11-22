@@ -176,22 +176,34 @@
   }
   
   .email-display {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
+    margin: 20px auto; /* Center horizontally with auto */
+    padding: 25px;
+    border: 1px solid #d4ccf4;
     border-radius: 8px;
     background-color: #f9f9f9;
     font-family: "Inter", sans-serif;
     line-height: 1.6;
+    border: 2px solid #d4ccf4;
+    border-radius: 30px;
+    max-width: 650px; /* Limit the width for better appearance */
+    text-align: left; /* Optional: Center-align text */
   }
   
+  .email-display strong {
+    font-weight: bold;
+    color: #000; /* Optional: Change color for emphasis */
+    font-size: 1rem;
+  }
+  
+  
   .email-display h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 10px;
     color: #333;
   }
   
   .email-display p {
+    font-size: .925rem;
     white-space: pre-wrap;
     color: #333;
   }
