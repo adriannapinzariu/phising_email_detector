@@ -3,6 +3,9 @@ import axios from "axios";
 import Header from "./Header"; // Import Header component
 import MiddleSection from "./MiddleSection";
 import Footer from "./Footer";
+
+
+
 import "@fontsource/inter";
 import "./App.css";
 
@@ -24,7 +27,9 @@ function App() {
   };
 
   return (
+    
     <div className="container">
+    <div className="css-selector">
 
       <Header
         title="AI-Powered Phishing Detection"
@@ -32,6 +37,7 @@ function App() {
       />
       <MiddleSection />
       <Footer />
+    </div>
     </div>
   );
 }
