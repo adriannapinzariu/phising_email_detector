@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Header from "./Header"; // Import Header component
+import MiddleSection from "./MiddleSection";
 import "./App.css";
 
 function App() {
@@ -27,36 +28,7 @@ function App() {
         title="AI-Powered Phishing Detection"
         subtitle="Analyze email content to detect potential phishing attacks."
       />
-      <main className="main">
-        <form onSubmit={handleSubmit} className="form">
-          <textarea
-            className="email-input"
-            value={emailContent}
-            onChange={(e) => setEmailContent(e.target.value)}
-            placeholder="Paste your email content here..."
-            rows="10"
-          ></textarea>
-          <button type="submit" className="analyze-button">
-            Analyze Email
-          </button>
-        </form>
-        {result && (
-          <div className="result-box">
-            {result.error ? (
-              <p className="error-text">{result.error}</p>
-            ) : (
-              <>
-                <p className="result-label">Likelihood:</p>
-                <p className="result-value">{result.likelihood}%</p>
-                <p className="result-label">Result:</p>
-                <p className="result-value">
-                  {result.is_phishing ? "Phishing Email" : "Safe Email"}
-                </p>
-              </>
-            )}
-          </div>
-        )}
-      </main>
+      <MiddleSection />
       <footer className="footer">
         <p>© 2024 Phishing Detection AI. All rights reserved.</p>
       </footer>

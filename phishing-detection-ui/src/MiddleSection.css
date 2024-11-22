@@ -1,0 +1,71 @@
+/* MiddleSection.css */
+
+.middle-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f4f4f9;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+    color: #6c63ff;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .main-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.2;
+    margin: 20px 0;
+  }
+  
+  .main-heading .highlight {
+    color: #6c63ff;
+  }
+  
+  .subheading {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .primary-button {
+    background-color: #6c63ff;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .primary-button:hover {
+    background-color: #4c49b2;
+  }
+  
+  .secondary-button {
+    background-color: white;
+    color: #6c63ff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: 2px solid #6c63ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .secondary-button:hover {
+    background-color: #6c63ff;
+    color: white;
+  }
+  
