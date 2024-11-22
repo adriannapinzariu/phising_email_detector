@@ -223,6 +223,20 @@
     font-family: "Inter", sans-serif;
     font-weight: 300;
   }
+
+  .highlight-info {
+    margin-top: 15px;
+    font-size: 1rem; /* Adjust font size */
+    font-family: "Inter", sans-serif;
+    color: #555; /* Neutral color for explanation text */
+  }
+  
+  .highlight-info p {
+    margin: 5px 0; /* Add spacing between lines */
+  }
+  
+
+  
   
   .red-text {
     color: red;
@@ -236,3 +250,34 @@
     font-weight: 300;
   }
   
+  .highlight-info {
+    margin-top: 15px;
+    font-size: 1rem; /* Adjust font size */
+    font-family: "Inter", sans-serif;
+    color: #555; /* Neutral color for explanation text */
+  }
+  
+  .highlight-info p {
+    margin: 5px 0; /* Add spacing between lines */
+  }
+  
+  .highlight-box {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .red-highlight {
+    color: #ff4d4d;
+    background-color: #ffe0e0; /* Light red background */
+  }
+  
+  .green-highlight {
+    color: #4caf50;
+    background-color: #e0f7e0; /* Light green background */
+  }
+  
+
+

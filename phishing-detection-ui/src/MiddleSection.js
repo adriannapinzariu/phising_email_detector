@@ -139,11 +139,24 @@ function MiddleSection() {
   </div>
 )}
 
-      {!isLoading && processedEmail && (
-        <div className="email-display">
-          <p dangerouslySetInnerHTML={{ __html: processedEmail }}></p>
-        </div>
-      )}
+{!isLoading && processedEmail && (
+  <div>
+    <div className="email-display">
+      <p dangerouslySetInnerHTML={{ __html: processedEmail }}></p>
+    </div>
+    <div className="highlight-info">
+      <p>
+        <span className="highlight-box red-highlight">Red</span>: Phishy words contributing to the decision.
+      </p>
+      <p>
+        <span className="highlight-box green-highlight">Green</span>: Safe words contributing to the decision.
+      </p>
+    </div>
+  </div>
+)}
+
+
+      
     </section>
   );
 }
