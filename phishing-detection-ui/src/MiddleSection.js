@@ -120,43 +120,47 @@ function MiddleSection() {
           View Results
         </button>
       </div>
+
       {isLoading && (
         <div className="loading-bar">
           <div className="loading-bar-progress"></div>
         </div>
       )}
+
       {error && <p className="error-text">{error}</p>}
+
       {!isLoading && resultData && (
-  <div className="results-display">
-    <p>
-      <strong>Results:</strong>{" "}
-      <span
-        className={resultData.result === "Phishing" ? "red-text" : "green-text"}
-      >
-        {resultData.result} - {resultData.likelihood}%
-      </span>
-    </p>
-  </div>
-)}
+        <div className="results-container">
+          <h3 className="results-header">Results</h3>
+          <div className="results-display">
+            <p>
+              <span
+                className={
+                  resultData.result === "Phishing" ? "red-text" : "green-text"
+                }
+              >
+                {resultData.result} - {resultData.likelihood}%
+              </span>
+            </p>
+          </div>
+        </div>
+      )}
 
-{!isLoading && processedEmail && (
-  <div>
-    <div className="email-display">
-      <p dangerouslySetInnerHTML={{ __html: processedEmail }}></p>
-    </div>
-    <div className="highlight-info">
-      <p>
-        <span className="highlight-box red-highlight">Red</span>: Phishy words contributing to the decision.
-      </p>
-      <p>
-        <span className="highlight-box green-highlight">Green</span>: Safe words contributing to the decision.
-      </p>
-    </div>
-  </div>
-)}
-
-
-      
+      {!isLoading && processedEmail && (
+        <div>
+          <div className="email-display">
+            <p dangerouslySetInnerHTML={{ __html: processedEmail }}></p>
+          </div>
+          <div className="highlight-info">
+            <p>
+              <span className="highlight-box red-highlight">Red</span> - AI Flagged as Phishy.
+            </p>
+            <p>
+              <span className="highlight-box green-highlight">Green</span> - AI Flagged as Safe.
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

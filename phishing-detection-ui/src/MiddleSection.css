@@ -216,14 +216,27 @@
     white-space: pre-wrap;
     color: #333;
   }
-
-  .results-display {
+  
+  .results-container {
     margin-top: 20px;
+    text-align: center;
+  }
+  
+  .results-header {
+    font-size: 1.75rem; /* Larger header size */
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    margin-bottom: -7.5px; /* Add spacing between header and results */
+  }
+  
+  .results-display {
     font-size: 1.2rem; /* Adjust font size for result display */
     font-family: "Inter", sans-serif;
-    font-weight: 300;
+    font-weight: 500;
   }
-
+  
+  
   .highlight-info {
     margin-top: 15px;
     font-size: 1rem; /* Adjust font size */
@@ -236,17 +249,15 @@
   }
   
 
-  
-  
   .red-text {
     color: red;
-    font-size: 1.1rem; /* Adjust font size for red text */
+    font-size: 1.15rem; /* Adjust font size for red text */
     font-weight: 300;
   }
   
   .green-text {
     color: green;
-    font-size: 1.1rem; /* Adjust font size for green text */
+    font-size: 1.15rem; /* Adjust font size for green text */
     font-weight: 300;
   }
   
