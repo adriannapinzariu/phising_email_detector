@@ -1,10 +1,12 @@
 import React from "react";
 import "./MiddleSection.css";
+import "@fontsource/inter";
 
 function MiddleSection() {
   return (
     <section className="middle-section">
-      <p className="tagline">Introduce Cloud Platforms</p>
+      <button className="cloud-platform-button">Discover Phishing Protection</button>
+
       <h1 className="main-heading">
         Phishing <span className="highlight">Detection</span> <br />
         Anywhere and Anytime

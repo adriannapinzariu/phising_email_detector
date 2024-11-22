@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
 .nav-header {
   display: flex;
   align-items: center;
@@ -22,18 +24,20 @@
 .logo-text {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #6c63ff; /* Matches the purple used in the header */
+  color: #6c63ff; 
 }
 
 .nav-menu {
   display: flex;
   gap: 60px;
-  margin-right: 27px;
+  margin-right: 35px;
 }
 
 .nav-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 375;
   font-size: .9rem;
-  color: #76787a;
+  color: #666;
   text-decoration: none;
   transition: color 0.3s;
   
