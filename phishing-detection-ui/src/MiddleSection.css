@@ -292,8 +292,8 @@
 
   .phishing-image {
     width: 100%;
-    max-width: 450px; /* Adjust size as necessary */
-    margin: -110px auto;
+    max-width: 600px; /* Adjust size as necessary */
+    margin: -130px auto;
     display: block;
   }
   
