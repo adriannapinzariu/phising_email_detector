@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Header from "./Header"; // Import Header component
 import MiddleSection from "./MiddleSection";
-import PerformanceSection from "./PerformanceSection";
+import Footer from "./Footer";
 import "@fontsource/inter";
 import "./App.css";
 
@@ -31,9 +31,7 @@ function App() {
         subtitle="Analyze email content to detect potential phishing attacks."
       />
       <MiddleSection />
-      <footer className="footer">
-        <p>© 2024 Phishing Detection AI. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
