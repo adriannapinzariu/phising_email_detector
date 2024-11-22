@@ -1,0 +1,197 @@
+.performance-section {
+  display: flex;
+  justify-content: flex-start; /* Align boxes to the left */
+  align-items: flex-start;
+  gap: 0; /* No space between the boxes */
+  padding: 0;
+}
+
+
+.performance-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 0px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 45%; 
+  text-align: center;
+  height: 325px;
+  max-width: 500px; 
+  width: 100%; /* Full width for responsiveness */
+  max-width: 600px; /* Match the card dimensions */
+  margin: 0 auto; /* Center the card */
+  position: relative; /* For icon alignment */
+}
+
+
+.welcome-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 0px;
+  height: 325px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%; /* Full width for responsiveness */
+  max-width: 400px; /* Match the card dimensions */
+  margin: 0 auto; /* Center the card */
+  position: relative; /* For icon alignment */
+  
+  margin-right: -50px; /* Force closer spacing */
+}
+
+.card-line {
+  width: 100%;
+  height: 1px;
+  background-color: #e0e0e0; 
+  margin-top: 10px;
+  margin-bottom: 20px; /* Add spacing below the line */
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start; /* Align dots to the left */
+  padding-left: 10px;
+  gap: 8px; /* Spacing between the dots */
+}
+
+.dot {
+  width: 8px; /* Size of the dot */
+  height: 8px;
+  background-color: #c4c4c4; /* Gray color */
+  border-radius: 50%;
+}
+
+.icon-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f9; /* Light background for the icons */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  color: #6c63ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.computer-icon {
+  margin-right: -15px;
+}
+
+.cloud-icon {
+  margin-left: -15px;
+}
+
+.welcome-heading {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  color: #000;
+}
+
+.welcome-text {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.connect-button {
+  background-color: white;
+  color: #6c63ff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid #6c63ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.connect-button:hover {
+  background-color: #6c63ff;
+  color: white;
+  box-shadow: 0 4px 8px rgba(108, 99, 255, 0.2);
+}
+
+
+.welcome-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.welcome-text {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.connect-button {
+  background-color: #6c63ff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.connect-button:hover {
+  background-color: #4c49b2;
+}
+
+.performance-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.package-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.package {
+  background: #f4f4f9;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.package h3 {
+  color: #6c63ff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.package p {
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.small-package {
+  background: #e0f7fa; 
+}
+
+.medium-package {
+  background: #d1c4e9; 
+}
+
+.large-package {
+  background: #b39ddb; 
+  color: white;
+}

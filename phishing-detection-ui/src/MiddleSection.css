@@ -54,6 +54,7 @@
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 40px;
   }
   
   .primary-button:hover {
@@ -71,6 +72,7 @@
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 40px;
   }
   
   .secondary-button:hover {
@@ -97,5 +99,100 @@
     background-color: #6c63ff; /* Purple background on hover */
     color: white; /* White text on hover */
     box-shadow: 0 6px 15px rgba(108, 99, 255, 0.5); /* Enhanced glow on hover */
+  }
+
+  /* Loading Bar Container */
+.loading-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 12px;
+    background-color: #e0e0e0; /* Background color for the bar */
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px auto; /* Center the loading bar */
+    position: relative;
+  }
+  
+  /* Loading Bar Progress */
+  .loading-bar-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      #6c63ff 25%,
+      #836eff 25%,
+      #836eff 50%,
+      #6c63ff 50%
+    );
+    background-size: 40px 40px; /* Size of stripes */
+    animation: loading 3s ease-in-out forwards, stripe-move 1s linear infinite;
+    border-radius: 8px;
+  }
+  
+  /* Expand Loading Bar Width */
+  @keyframes loading {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  /* Move Stripes */
+  @keyframes stripe-move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 0;
+    }
+  }
+
+  .result-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000; 
+    text-align: center;
+  }
+  
+  .phishing-feature {
+    background-color: #ffe0e0;
+    color: #ff4d4d;
+    font-weight: bold;
+    padding: 0 3px;
+    border-radius: 4px;
+  }
+  
+  .safe-feature {
+    background-color: #e0f7e0;
+    color: #4caf50;
+    font-weight: bold;
+    padding: 0 3px;
+    border-radius: 4px;
+  }
+  
+  .email-display {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+  }
+  
+  .email-display h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .email-display p {
+    white-space: pre-wrap;
+    color: #333;
   }
   

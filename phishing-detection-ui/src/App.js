@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Header from "./Header"; // Import Header component
 import MiddleSection from "./MiddleSection";
+import PerformanceSection from "./PerformanceSection";
 import "@fontsource/inter";
 import "./App.css";
 
