@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MiddleSection.css";
+import phishingImage from "./phishing.png"; 
 import "@fontsource/inter";
 
 function MiddleSection() {
@@ -105,21 +106,26 @@ function MiddleSection() {
         <br />
         From anywhere and on any email platform.
       </p>
-      <div className="button-group">
-        <input
-          id="file-upload"
-          type="file"
-          accept=".eml, .txt, .msg"
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-        <button className="primary-button" onClick={handleUploadClick}>
-          Upload An Email
-        </button>
-        <button className="secondary-button" onClick={handleViewResultsClick}>
-          View Results
-        </button>
-      </div>
+      {!isLoading && (
+        <div className="button-image-container">
+          <div className="button-group">
+            <input
+              id="file-upload"
+              type="file"
+              accept=".eml, .txt, .msg"
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+            <button className="primary-button" onClick={handleUploadClick}>
+              Upload An Email
+            </button>
+            <button className="secondary-button" onClick={handleViewResultsClick}>
+              View Results
+            </button>
+          </div>
+          <img src={phishingImage} alt="Phishing Illustration" className="phishing-image" />
+        </div>
+      )}
 
       {isLoading && (
         <div className="loading-bar">

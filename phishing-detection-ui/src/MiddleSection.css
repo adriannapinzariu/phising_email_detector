@@ -289,6 +289,17 @@
     color: #4caf50;
     background-color: #e0f7e0; /* Light green background */
   }
+
+  .phishing-image {
+    width: 100%;
+    max-width: 450px; /* Adjust size as necessary */
+    margin: -110px auto;
+    display: block;
+  }
+  
+  .button-image-container {
+    text-align: center;
+  }
   
 
 
