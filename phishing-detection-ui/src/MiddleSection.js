@@ -26,7 +26,7 @@ function MiddleSection() {
   };
 
   const handleViewResultsClick = async () => {
-    setIsLoading(true);
+    setIsLoading(true); // Start loading
     setError(null);
     setProcessedEmail(""); // Clear previous results
 
@@ -45,46 +45,48 @@ function MiddleSection() {
 
       const data = await response.json();
       const highlightedEmail = highlightEmail(data.features); // Highlight features from the backend
-      setProcessedEmail(highlightedEmail);
+
+      // Simulate loading bar duration
+      setTimeout(() => {
+        setIsLoading(false); // Stop loading after the bar is full
+        setProcessedEmail(highlightedEmail); // Set processed email
+      }, 3000); // Adjust the timeout duration as necessary
     } catch (err) {
       setError(err.message);
-    } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Stop loading in case of error
     }
   };
 
   const highlightEmail = (features) => {
     let content = emailContent;
   
-    // Extract and bold the subject line if it exists
-    const subjectMatch = content.match(/Subject:\s*(.+)/i); // Match the subject line
-    if (subjectMatch) {
-      const subject = subjectMatch[1];
-      content = content.replace(
-        new RegExp(`Subject:\\s*${subject}`, "i"),
-        `<strong>Subject: ${subject}</strong>`
-      );
-    }
-  
-    // Highlight phishing and safe features
-    features.phishing.forEach((word) => {
-      content = content.replace(
-        new RegExp(`\\b${word}\\b`, "gi"),
-        `<span class="phishing-feature">${word}</span>`
-      );
+    // Ensure the entire subject line is bolded
+    content = content.replace(/^(Subject:.*)$/im, (match) => {
+      return `<strong>${match}</strong>`;
     });
   
+    // Highlight phishing features
+    features.phishing.forEach((word) => {
+      const regex = new RegExp(`\\b(${word})\\b`, "gi"); // Case-insensitive regex
+      content = content.replace(regex, (match) => {
+        const capitalized = match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
+        return `<span class="phishing-feature">${capitalized}</span>`;
+      });
+    });
+  
+    // Highlight safe features
     features.safe.forEach((word) => {
-      content = content.replace(
-        new RegExp(`\\b${word}\\b`, "gi"),
-        `<span class="safe-feature">${word}</span>`
-      );
+      const regex = new RegExp(`\\b(${word})\\b`, "gi"); // Case-insensitive regex
+      content = content.replace(regex, (match) => {
+        const capitalized = match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
+        return `<span class="safe-feature">${capitalized}</span>`;
+      });
     });
   
     return content;
   };
   
-
+  
   return (
     <section className="middle-section">
       <button className="cloud-platform-button">Discover Phishing Protection</button>
